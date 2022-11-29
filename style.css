@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'arial', cursive;
+  /* font-family: 'Press Start 2P', cursive; */
+  font-size: larger;
+  
+}
+canvas {
+  display: block;
+}
+
+button {
+  /* font-family: 'Press Start 2P', cursive; */
+  font-size: large;
+  padding: 10px;
+  color: rgb(74, 115, 214);
+  background-color: rgb(250, 220, 20);
+  border-radius: 10px;
+  cursor: pointer;
+}
