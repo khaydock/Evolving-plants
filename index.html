@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="p5.js"></script>
+  <!-- <script src="p5.sound.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <script src="components/controls/timer.js"></script>
+  <script src="components/controls/growable.js"></script>
+
+  <script src="components/generation.js"></script>
+  <script src="components/plant.js"></script>
+  <script src="components/stem.js"></script>
+  <script src="components/leaf.js"></script>
+  <script src="components/bud.js"></script>
+  <script src="components/flower.js"></script>
+  <script src="components/seedpod.js"></script>
+  <script src="components/seed.js"></script>
+
+  <script src="components/root.js"></script>
+  <script src="components/rootlet.js"></script>
+
+  <script src="components/mutants/stalkTop.js"></script>
+  <script src="components/mutants/branch.js"></script>
+  <script src="components/mutants/mutantStem.js"></script>
+  <script src="components/mutants/mutantBud.js"></script>
+
+  <script src="components/day&night/back.js"></script>
+  <script src="components/day&night/hills.js"></script>
+  <script src="components/day&night/NightSky.js"></script>
+  <script src="components/day&night/Star.js"></script>
+  <script src="components/day&night/Moon.js"></script>
+
+  <!-- <script src="components/cloud1.js"></script> -->
+  <script src="components/backgrounds/storm.js"></script>
+  <script src="components/weather/droplet.js"></script>
+  <script src="components/weather/cloud.js"></script>
+  <script src="components/weather/overcast.js"></script>
+  <script src="components/weather/lightning.js"></script>
+  <script src="components/weather/rain.js"></script>
+  <script src="components/weather/raindrop.js"></script>
+
+  <script src="components/flooding/stone.js"></script>
+  <script src="components/flooding/waterSeg.js"></script>
+  <script src="components/flooding/flood.js"></script>
+
+  <script src="components/Destruction/destroy.js"></script>  
+  <script src="components/Destruction/excavator.js"></script>
+  <script src="components/Destruction/body.js"></script>
+  <script src="components/Destruction/wheels.js"></script>
+  <script src="components/Destruction/arm1.js"></script>
+  <script src="components/Destruction/arm2.js"></script>
+  <script src="components/Destruction/arm3.js"></script>
+  <script src="components/Destruction/shovel.js"></script>
+ 
+
+  <style>
+    label {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+    }
+
+    #selection-info {
+      position: absolute;
+      /* position: absolute; */
+      top: 0;
+      right: 0;
+      width: 16rem;
+      height: 100%;
+      overflow-y: scroll;
+      z-index: 100;
+
+      font-family: 'Courier New', Courier, monospace;
+      font-size: small;
+    }
+
+    .plant-info {
+      display: block;
+      width: 100%;
+    }
+
+    .plant-info button {
+      display: inline-block;
+      padding: 4px;
+    }
+
+    .plant-info h2 {
+      display: inline-block;
+      padding: 0px 4px;
+    }
+
+    .plant-info .hidden {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script src="selection.js"></script>
+
+  <label for="time">TIME:</label>
+
+  <section id="selection-info">
+    <h2>selection info</h2>
+  </section>
+</body>
+
+</html>

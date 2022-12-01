@@ -1,0 +1,26 @@
+title Evolving Plants - setup
+
+participant sketch
+participant generation
+participant plant
+participant stem
+participant leaf
+participant bud
+participant flower
+participant seedpod
+participant seed
+
+sketch->generation:new generation
+sketch->generation:init
+generation->plant:new plant
+plant->plant:init
+plant->stem:new stem
+stem->stem:init
+stem->leaf:[hasLeaf = true] new leaf
+stem->bud:[hasLeaf = false] new bud
+bud->flower:new flower
+flower->seedpod:new seedpod
+seedpod->seed:new seed
+seedpod->seedpod:updateSeedPositions
+seedpod->seed:update
+seedpod->seed:grow
