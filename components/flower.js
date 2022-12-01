@@ -193,7 +193,7 @@ class Flower extends Growable {
       this.pos.x += random(-5,10)
       this.pos.add(this.dropVector)
 
-      this.dropping = true
+      // this.dropping = true
     }  
   }
   drawStamen(stalen) {

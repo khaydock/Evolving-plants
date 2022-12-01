@@ -4,7 +4,11 @@ class Destroy {
 constructor() {
 
   // Define excavator
-  this.excavator = new Excavator(width*.3, height *.8)
+
+  // this.excavator = new Excavator(width*.3, height *.8)
+
+  this.excavator = new Excavator(0, height-250)
+
  
   }
 

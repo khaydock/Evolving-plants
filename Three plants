@@ -1,0 +1,463 @@
+//DEFINE VARIABLES
+var canwidth;
+var ground;
+
+var numplants;
+
+var separation;
+var stalkheight;
+var branchheight;
+
+let rootx = [];
+let rooty = [];
+let stalkx = [];
+let stalky = [];
+
+let leaf1x = [];
+let leaf1y = [];
+let leaf2x =[];
+let leaf2y = [];
+
+let seed1x = [];
+let seed1y = [];
+let seed2x = [];
+let seed2y = [];
+let seed3x = [];
+let seed3y = [];
+let seed4x = [];
+let seed4y = [];
+let seed5x = [];
+let seed5y = [];
+let newseed1x = [];
+let newseed2x = [];
+let newseed3x = [];
+let newseed4x = [];
+
+let randomx = [];
+let randomy = [];
+
+var xpos;
+var ypos;
+var begx;
+var begy;
+var endx;
+var endy;
+
+// Average stalk height and branchheight
+var stalkheight;
+var branchheight;
+
+var pcount;
+
+// var x;
+var y;
+var dx;
+var dy;
+
+let leaf1width = [];
+let leaf2width = [];
+let leaf1height = [];
+let leaf2height = [];
+
+// Selection variables
+// selectp[i] will be true if plant i is selected, otherwise false
+let selectp = [];
+var seeddroppressed;
+var selectplant = 0;
+var selecton;
+var dropped;
+var leftside;
+var rightside;
+var noselection;
+
+var season = 0;
+let seed1;
+let seed2;
+var randomw1;
+var randomw2;
+var randomw3;
+
+
+function resetSketch(){    
+  // Define total number of plants    
+    numplants = 3;
+    
+  // Define average stalk height and branchheight
+    stalkheight = 200;
+    branchheight = 80;
+      
+  // Define average x position of first plant
+    xpos = 200;
+  // Define average y position of top of stalk
+    ypos = ground - stalkheight;   
+  // Define root points and stalk tops
+    separation = 0;
+    for (var i = 0; i < numplants; i++) {
+    randomx[i] = random(-40,40);
+    randomy[i] = random(-30,30);
+    rootx[i]  = xpos + separation +randomx[i];
+    rooty[i]  = ground;
+    stalkx[i] = rootx[i];
+    stalky[i] = ypos + randomy[i];
+    separation = separation + 400;
+      
+    randomw1 = random(-3,3)
+    randomw2 = random(-3,3)
+    randomw3 = random(-3,3)
+
+    
+  // Define leaf points   
+    leaf1x[i] = rootx[i] - 100;
+    leaf1y[i] = rooty[i] - branchheight - 40;
+      
+    leaf2x[i] = rootx[i] + 110;
+    leaf2y[i] = rooty[i] - branchheight - 90;
+      
+  // Define seed points
+    seed1x[i] = rootx[i] -55
+    seed1y[i] = stalky[i] -26;
+    seed2x[i] = rootx[i] - 31;
+    seed2y[i] = stalky[i] - 52;
+    seed3x[i] = rootx[i] + 8;
+    seed3y[i] = stalky[i] - 59;
+    seed4x[i] = rootx[i] + 38;
+    seed4y[i] = stalky[i] - 48;
+    seed5x[i] = rootx[i] + 60;
+    seed5y[i] = stalky[i] - 20;
+
+
+  // Initialise selection variables
+      // If selectp is true, the plant has been selected
+    selectp[i] = false;
+    seeddroppressed = false;  
+    dropped = false;
+      // selecton is true if DROP SEEDS has not been pressed
+    selecton = true;
+    // Initialise noselction to false to indicate that no plant has yet been selected
+    noselection = false;
+   
+}
+}
+
+//START
+
+function setup() {
+    //define canvas width and height (ground)
+    canwidth = 1200;
+    ground = 400;
+  createCanvas(canwidth, ground);
+  
+  resetSketch();
+
+  var buttonReset = createButton("reset");
+  buttonReset.mousePressed(resetSketch); 
+  
+  var buttonDropseeds = createButton("DROP SEEDS")
+  buttonDropseeds.mousePressed(Dropseeds);
+  
+  var buttonNewSeason = createButton("NEW SEASON")
+  buttonNewSeason.mousePressed(NewSeason);
+  
+}
+  
+function draw() {
+    background(160,170,245);
+    stroke(20, 100, 200);
+ 
+  if (season == 0) {
+   // Define initial leaf widths and heights
+    leaf1width[0] = 60;
+    leaf1height[0] = 104;
+    leaf2width[0] = leaf1width[0] + randomw1;
+    leaf2height[0] = 93;
+          
+    leaf1width[1] = 34;
+    leaf1height[1] = 136;
+    leaf2width[1] = leaf1width[1] + randomw2;
+    leaf2height[1] = 103;
+
+    leaf1width[2] = 77;
+    leaf1height[2] = 92;
+    leaf2width[2] = leaf1width[2] + randomw3;
+    leaf2height[2] = 83;
+    
+  }
+  
+// Draw the fixed plant reference points (for testing purposes)
+    strokeWeight(2)
+    xpos = 200;
+    for (let i = 0; i < numplants; i++) {
+      line (xpos, ground, xpos, ypos)
+      xpos = xpos + 400;
+      } 
+  
+// Draw the field of plants 
+  Grow();
+}
+
+function NewSeason() {
+  season = season + 1
+    
+  // find a random number for each plant - the initial widths of the two leaves on a plant will vary by this random number
+    randomw1 = random(-3,3)
+    randomw2 = random(-3,3)
+    randomw3 = random(-3,3)
+  
+     print('season = ' + season);
+  for (i = 0; i < numplants; i++) {
+      if (selectp[i]) {
+        let j = i + 1
+      print('Plant selected:' + j);     
+      }
+  }
+
+function germinate() {
+  // Find the seed that fell closest to the fixed plant reference point
+  for (i = 0; i , numplants; i++) {
+    for (j = 0; j < 4; j++) {
+    distance = abs(newseed1x[j] - rootx[i])
+      if (distance < closest) {
+        closest = distance
+        
+      }
+  }
+}
+  
+ resetSketch(); 
+  
+  // Set leaf widths and heights
+    if (selectplant == 1) {
+    for (let i = 0; i < numplants; i++) {
+      leaf1width[i] = leaf1width[0] + random(-8,8)
+      leaf2width[i] = leaf1width[0] + random(-8,8)
+      leaf1height[i] = leaf1height[0] + random(-22,22)
+      leaf2height[i] = leaf1height[0] + random(-22,22)
+  }   
+      print('Season = ' + season, 'selectplant = ' + selectplant);
+      print('leaf1width[0] = ' + leaf1width[0], 'leaf1width[1] = ' + leaf1width[1],);
+      print('leaf2width[0] = ' + leaf2width[0], 'leaf2width[1] = ' + leaf2width[1],);
+      
+
+  } else {
+    if (selectplant == 2) {
+    for (let i = 0; i < numplants; i++) {
+      leaf1width[i] = leaf1width[1] + random(-8,8)
+      leaf2width[i] = leaf1width[1] + random(-8,8)
+      leaf1height[i] = leaf1height[1] + random(-22,22)
+      leaf2height[i] = leaf1height[1] + random(-22,22)
+    }    
+    print('Seeson = ' + season, 'selectplant = ' + selectplant); 
+    print('leaf1width[0] = ' + leaf1width[0], 'leaf1width[1] = ' + leaf1width[1],);
+    print('leaf2width[0] = ' + leaf2width[0], 'leaf2width[1] = ' + leaf2width[1],);
+    }
+  }
+  // Draw the plants 
+  Grow();
+}
+
+
+function Grow() {
+  
+
+// Type SELECT only if DROP SEEDS has not been pressed
+  if(seeddroppressed == false) {
+    textSize(24);
+    fill(0);
+    strokeWeight(0);
+    text('SELECT', 350, 40);  
+  }
+  
+    branchpoint = ground - branchheight;    
+  
+// Draw the plants 
+
+  for (pcount = 0; pcount < numplants; pcount++) {
+    
+    // Draw an ellipse on plant pcount if it was selected
+    if (selectp[pcount]){
+      fill (240,180,20, 20);
+      strokeWeight(5);
+      stroke(240, 100, 20);
+      ellipse (rootx[pcount],150,180)  
+    } 
+  // Draw the plant (without seeds)
+  drawplant(pcount);
+
+  // If DROP SEEDS has not been pressed, draw the seeds 
+  if (seeddroppressed == false) {    
+        
+    seed1 = new Seedshowdrop(seed1x[pcount], seed1y[pcount], newseed1x[pcount]);
+    seed2 = new Seedshowdrop(seed2x[pcount], seed2y[pcount], newseed2x[pcount]);
+    seed3 = new Seedshowdrop(seed3x[pcount], seed3y[pcount], newseed3x[pcount]);
+    seed4 = new Seedshowdrop(seed4x[pcount], seed4y[pcount], newseed4x[pcount]);
+
+    seed1.show();
+    seed2.show();
+    seed3.show();
+    seed4.show();
+      
+  } else {
+
+  // If DROP SEEDS has been pressed and no plants were selected, select the plant 
+  if (noselection == true) {
+    selectp[pcount] = true;
+  }
+  // If DROP SEEDS has been pressed and the plant is not selected, draw the seeds    
+  if (selectp[pcount] == false) { 
+    
+    seed1 = new Seedshowdrop(seed1x[pcount], seed1y[pcount], newseed1x[pcount]);
+    seed2 = new Seedshowdrop(seed2x[pcount], seed2y[pcount], newseed2x[pcount]);
+    seed3 = new Seedshowdrop(seed3x[pcount], seed3y[pcount], newseed3x[pcount]);
+    seed4 = new Seedshowdrop(seed4x[pcount], seed4y[pcount], newseed4x[pcount]);
+
+    seed1.show();
+    seed2.show();
+    seed3.show();
+    seed4.show(); 
+       
+    } else {
+  // If DROP SEEDS has been pressed and the plant is selected, drop the seeds    
+      
+    seed1 = new Seedshowdrop(seed1x[pcount], seed1y[pcount], newseed1x[pcount]);
+    seed2 = new Seedshowdrop(seed2x[pcount], seed2y[pcount], newseed2x[pcount]);
+    seed3 = new Seedshowdrop(seed3x[pcount], seed3y[pcount], newseed3x[pcount]);
+    seed4 = new Seedshowdrop(seed4x[pcount], seed4y[pcount], newseed4x[pcount]);
+    
+    seed1.move();
+    seed1.show();
+    seed2.move();
+    seed2.show();
+    seed3.move();
+    seed3.show();
+    seed4.move();
+    seed4.show();
+    dropped = true;
+       
+     }
+    }
+  }
+}
+
+function Dropseeds() { 
+// this function sets variables to proceed for seed dropping when the SEEDDROP button is clicked
+   seeddroppressed = true;     
+ // If DROP SEED was pressed without selecting any plant, turn off SELECT sign
+  if (selecton){
+    selecton = false;
+// and if no plant was selected, select all plants
+    
+  }
+}
+
+
+function mousePressed(){ 
+  // Do not allow selection if DROP SEEDS has already been pressed
+  if (seeddroppressed == false) {
+  
+  // Allow any number of plants to be selected
+    
+  // Select plant i if the mouse is pressed near plant i
+    for (i = 0; i < numplants; i++) {
+      leftside = rootx[i] - 200;
+      rightside = rootx[i] + 200;
+      if (mouseX >leftside && mouseX < rightside && mouseY > 10 && mouseY < 400) {
+        selectp[i] = true;
+  // noselection is set to false to indicate that one or more plants are selected
+        noselection = false;
+      }
+    }
+  }
+}
+  
+  function drawplant(i){
+  // Draw the stalk
+  w = 20;
+  colourwidth(130, 240, 150, w);
+  drawstalk(rootx[i], rooty[i], stalkx[i], stalky[i], w);
+
+  // Draw branch 1 and leaf 1
+  w = 10;
+  drawbranch(rootx[i], branchpoint, leaf1x[i], leaf1y[i], w);
+  drawleaf(leaf1x[i], leaf1y[i] - (leaf1height[i] / 2), leaf1width[i], leaf1height[i]);
+   
+  // Draw branch 2 and leaf 2
+  drawbranch(rootx[i], branchpoint, leaf2x[i], leaf2y[i], w);
+  drawleaf(leaf2x[i], leaf2y[i] - (leaf2height[i] / 2), leaf2width[i], leaf2height[i]);
+  
+  //Draw seed stems
+  
+  // Set line width of seed stems:
+  strokeWeight(7);
+    
+  // Draw 5 seed stems
+    line(stalkx[i], stalky[i], seed1x[i], seed1y[i]); 
+    line(stalkx[i], stalky[i], seed2x[i], seed2y[i]); 
+    line(stalkx[i], stalky[i], seed3x[i], seed3y[i]); 
+    line(stalkx[i], stalky[i], seed4x[i], seed4y[i]); 
+    line(stalkx[i], stalky[i], seed5x[i], seed5y[i]); 
+
+  // Draw seed 5
+  seed5 = new Seedshowdrop(seed5x[i], seed5y[i], seed5x[i]);
+  seed5.show();
+   }    
+   
+  function colourwidth(r,b,g,w){
+  // Set colour and line width
+  stroke(r,b,g);
+  strokeWeight(w);
+}
+  
+function drawstalk(begx, begy, endx, endy, w){
+  // Draw stalk
+    strokeWeight(w);
+    line(begx, begy, endx, endy);
+}
+    
+function drawbranch(begx, begy, endx, endy,w){
+  // Set line width of branches
+    strokeWeight(w);  
+  // Draw branch
+    line(begx, begy, endx, endy);
+}
+  
+function drawleaf(x, y, dx, dy){
+  //Draw leaf
+    strokeWeight(5);
+    fill(0, 190, 60);
+    ellipse (x, y, dx, dy);
+
+ //Draw leaf vein
+    strokeWeight (5);
+    line (x, y + dy/2, x, y - dy/2);
+}
+
+  
+class Seedshowdrop {
+// Showing and dropping a seed
+  // newx is the final seed position
+  constructor(x, y, newx){
+    this.x = x;
+    this.y = y;
+    this.newx = newx;
+
+// Set seed colours
+    fill(280, 140, 20);
+    stroke(230, 140, 50);
+    strokeWeight(7);
+  }
+  show(){
+// Draw seed
+    ellipse (this.x, this.y, 20) 
+    this.newx = this.x
+  }
+// Dropping the seed
+  move(){
+     // Drop the seed onto the field
+    if (this.y < 400) {
+    // this.x = random (5, 1195);
+    this.x = this.x + random (-20, 20);
+    this.y = this.y + 5;
+    }
+    this.newx = this.x;
+  }
+}
