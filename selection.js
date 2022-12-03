@@ -9,7 +9,7 @@ let death = false
 
 stormy = false
 
-bulldozer = false
+bulldozer = true
 // excavTime is used to find out when each plant on the left dies (one at a time)
 excavTime = 0
 
@@ -105,6 +105,7 @@ function draw() {
      colorMode(HSB)
      back.transition()
      back.draw() 
+
     }
 
      // Check for the occasional storm

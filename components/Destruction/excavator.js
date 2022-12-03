@@ -23,6 +23,9 @@ class Excavator {
      // Define wheels 
      this.wheels = new Wheels(50,0)
 
+      // Define person 
+      this.person = new Person((width)/20,-(height*.8)/20)
+
        // Define clumps of earth that will be deposited ahead of the excavator
     this.clumps = []
     for (let i = 0; i < 20; i++) {
@@ -83,6 +86,12 @@ class Excavator {
     // ellipse (-220,-90 + random (0,20), 180 + random (0,100), 150 + random (0,80))
 
     pop()
+
+    if (this.goingBack) {
+       this.person.move()
+    this.person.show()
+    }
+   
   } 
 }
  

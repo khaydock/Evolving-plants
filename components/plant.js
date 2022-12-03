@@ -319,18 +319,10 @@ class Plant extends Growable {
     pop()
 
 
-    if (this.gobi > 0) {
-      // Draw the cauliflower or broccoli stalk top
-      if (this.currHeight >= this.thresh) {
-        // change the following to grow to see the stalk grow
-        this.stalkTop.grown()
-        this.stalkTop.draw()
-      }
-    }
-
     // Draw a little bud at the top of the growing stalk  
     let cx = this.pos.x
     let cy = this.pos.y - this.currHeight
+    stroke(this.plantR - amount, this.plantG - amount, this.plantB - amount)
     strokeWeight(2)
     bezier(cx, cy, cx + 7, cy - 5, cx + 8, cy - 12, cx, cy - 20)
     bezier(cx, cy, cx - 7, cy - 5, cx - 8, cy - 12, cx, cy - 20)
@@ -350,6 +342,15 @@ class Plant extends Growable {
     }
 
     pop()
+
+    if (this.gobi > 0) {
+      // Draw the cauliflower or broccoli stalk top
+      if (this.currHeight >= this.thresh) {
+        // change the following to grow to see the stalk grow
+        this.stalkTop.grown()
+        this.stalkTop.draw()
+      }
+    }
   }
 
 

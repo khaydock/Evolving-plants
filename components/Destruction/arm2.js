@@ -29,7 +29,7 @@ class Arm2 {
     let vx = random(-1.5,1.5)
     let vy = random(-1.5,1.5)
     push()
-      translate(this.pos.x+4.0*unit, this.pos.y+22.0*unit)
+      translate(this.pos.x, this.pos.y)
       rotate(-this.angle) 
      
       //Draw 2 circles, 220 pixels apart 

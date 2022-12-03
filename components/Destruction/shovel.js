@@ -26,7 +26,7 @@ class Shovel {
     let vx = random(-1.5,1.5)
     let vy = random(-1.5,1.5)
     push()
-      translate(this.pos.x+4.0*unit, this.pos.y+22.0*unit)
+      translate(this.pos.x, this.pos.y)
       rotate(-this.angle) 
      
       circle(vx, vy, 4.0*unit)
