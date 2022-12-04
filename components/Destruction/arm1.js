@@ -10,7 +10,7 @@ class Arm1 {
     this.unit = width*.017
       
     // Define arm2 
-    this.arm2 = new Arm2(this.pos.x+this.unit*4, this.pos.y+this.unit*4) 
+    this.arm2 = new Arm2(this.pos.x+this.unit*.4, this.pos.y+this.unit*4) 
   }
   
   rotate() {
@@ -31,20 +31,20 @@ class Arm1 {
     let vx = random(-2,2)
     let vy = random(-2,2)
     push()
-      // translate(this.pos.x+300+this.unit*22, this.pos.y-100+this.unit*22)
+      // translate(this.pos.x+300+this.unit*18, this.pos.y-100+this.unit*18)
       translate (this.pos.x,this.pos.y)
       rotate(-this.angle)
     
-      // Draw 2 circles, 220 pixels apart 
+      // Draw 2 circles, 180 pixels apart 
       circle(vx, vy, 4.0*this.unit)
-      circle(22.0*this.unit+vx, vy, 5.6*this.unit)
+      circle(18.0*this.unit+vx, vy, 5.6*this.unit)
 
       // Connect the circles by a quadrilateral without stroke
       noStroke()
       beginShape() 
         vertex(vx, vy+2.0*this.unit)
-        vertex(22.0*this.unit, 2.8*this.unit)
-        vertex(22.0*this.unit, -2.8*this.unit)
+        vertex(18.0*this.unit, 2.8*this.unit)
+        vertex(18.0*this.unit, -2.8*this.unit)
         vertex(0, -2.0*this.unit)
       endShape(CLOSE)
 
@@ -52,9 +52,9 @@ class Arm1 {
       stroke(100,90,80)
       beginShape(LINES)
       vertex(vx, vy+2.0*this.unit)
-      vertex(vx+22.0*this.unit, vy+2.8*this.unit)
+      vertex(vx+18.0*this.unit, vy+2.8*this.unit)
 
-      vertex(vx+22.0*this.unit, vy-2.8*this.unit)
+      vertex(vx+18.0*this.unit, vy-2.8*this.unit)
       vertex(vx,vy -2.0*this.unit)
       endShape(CLOSE)
 

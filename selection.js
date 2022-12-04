@@ -12,7 +12,7 @@ let death = false
 
 stormy = false
 
-bulldozer = false
+bulldozer = true
 // excavTime is used to find out when each plant on the left dies (one at a time)
 excavTime = 0
 

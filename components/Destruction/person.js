@@ -58,24 +58,24 @@ class Person {
     pop ()
 
     // the arm
-    //  push ()
-    //  for (let i = 0; i < 8; i++) {
-    //   translate (0,this.wave[i])
-    //   translate (this.pos.x+9,-this.pos.y+7)
-    //   rotate (this.armAng)
-    //   beginShape()
-    //     vertex(0,3)
-    //     bezierVertex(-3,1,     -4,3,    -5,2.7)  
-    //     bezierVertex(-6,2.5,  -9,-.5,   -9,-2)  
-    //     bezierVertex(-9,-3,     -8,-4,     -8,-3.5) 
-    //     bezierVertex(-8,-3,     -8,-2.5,   -7.5,-2)
-    //     bezierVertex(-7.1,-2.7, -7.4,-2.9, -7,-2.7) 
-    //     bezierVertex(-6.7,-2.7, -6.7,-1.4, -7,-1)  
-    //     bezierVertex(-6.3,-.5,   -5.5,1,  -4.7,1)
-    //     vertex(0, -1) 
-    //   endShape()
-    // } 
-    // pop ()
+     push ()
+     for (let i = 0; i < 8; i++) {
+      translate (0,this.wave[i])
+      translate (this.pos.x+9,-this.pos.y+7)
+      rotate (this.armAng)
+      beginShape()
+        vertex(0,3)
+        bezierVertex(-3,1,     -4,3,    -5,2.7)  
+        bezierVertex(-6,2.5,  -9,-.5,   -9,-2)  
+        bezierVertex(-9,-3,     -8,-4,     -8,-3.5) 
+        bezierVertex(-8,-3,     -8,-2.5,   -7.5,-2)
+        bezierVertex(-7.1,-2.7, -7.4,-2.9, -7,-2.7) 
+        bezierVertex(-6.7,-2.7, -6.7,-1.4, -7,-1)  
+        bezierVertex(-6.3,-.5,   -5.5,1,  -4.7,1)
+        vertex(0, -1) 
+      endShape()
+    } 
+    pop ()
     
     // the old fixed arm
     // vertex(9, 6)

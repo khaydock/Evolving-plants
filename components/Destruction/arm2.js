@@ -32,16 +32,16 @@ class Arm2 {
       translate(this.pos.x, this.pos.y)
       rotate(-this.angle) 
      
-      //Draw 2 circles, 220 pixels apart 
+      //Draw 2 circles, 180 pixels apart 
       circle(vx, vy, 4.0*unit)
-      circle(vx+22.0*unit, vy, 5.6*unit)
+      circle(vx+18.0*unit, vy, 5.6*unit)
 
       noStroke()
       beginShape()
       // Connect the circles by a quadrilateral without stroke
         vertex(vx, vy+2.0*unit)
-        vertex(vx+22.0*unit, vy+2.8*unit)
-        vertex(vx+22.0*unit, vy-2.8*unit)
+        vertex(vx+18.0*unit, vy+2.8*unit)
+        vertex(vx+18.0*unit, vy-2.8*unit)
         vertex(vx, vy-2.0*unit)
       endShape(CLOSE) 
 
@@ -49,8 +49,8 @@ class Arm2 {
       stroke(130,90,60,150)
       beginShape(LINES)
       vertex(vx, vy+2.0*unit)
-      vertex(vx+22.0*unit, vy+2.8*unit)
-      vertex(vx+22.0*unit, vy-2.8*unit)
+      vertex(vx+18.0*unit, vy+2.8*unit)
+      vertex(vx+18.0*unit, vy-2.8*unit)
       vertex(vx, vy-2.0*unit)
       endShape(CLOSE)
 
