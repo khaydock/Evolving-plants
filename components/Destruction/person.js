@@ -1,4 +1,5 @@
 class Person {
+  // Make a person
   constructor(x,y) {
     this.pos = createVector(x, y)
     this.armAng = 0
@@ -36,13 +37,13 @@ class Person {
         bezierVertex(9,4.3,   7.5,5.3, 7.3,4.8) 
         bezierVertex(6.8,4.5, 7,4.3,   7,4.3) 
         // mouth
-        bezierVertex(7,4.3,   6.3,4.3,  6.6,4) 
-        bezierVertex(7.4,3.5,  7.5,3.8,  7.4,3.5)
+        bezierVertex(7,4.3,   6.3,4.3,  6.6,4-random()) 
+        bezierVertex(7.4,3.5,  7.5,3.8,  7.4-random(),3.5)
         bezierVertex(7,3.2,  5.8,3.5,  6,3.3) 
         // nose
         bezierVertex(6.2,2.8,  6.4,2.5,  6.4,2.5)
         bezierVertex(6.4,2.5,  5.4,3,  5.5,2.4)
-        bezierVertex(5.6,2.1,  6.3,1.5,  6,1.3)
+        bezierVertex(5.6,2.1,  6.3,1.5,  6.1,1.3)
         // eye
         bezierVertex(6.4,1.4,  6.7,1.4,  7.5,1.5)
         bezierVertex(7.7,1.3,  6.7,0.7,  6.4,1.4)
@@ -52,28 +53,29 @@ class Person {
         bezierVertex(12.7,2,  17,9,   18,13) 
         vertex(8,13) 
      endShape() 
+     circle (6.76,1.26, .4)
     }
     pop ()
 
     // the arm
-     push ()
-     for (let i = 0; i < 8; i++) {
-      translate (0,this.wave[i])
-      translate (this.pos.x+9,-this.pos.y+7)
-      rotate (this.armAng)
-      beginShape()
-        vertex(0,3)
-        bezierVertex(-3,1,     -4,3,    -5,2.7)  
-        bezierVertex(-6,2.5,  -9,-.5,   -9,-2)  
-        bezierVertex(-9,-3,     -8,-4,     -8,-3.5) 
-        bezierVertex(-8,-3,     -8,-2.5,   -7.5,-2)
-        bezierVertex(-7.1,-2.7, -7.4,-2.9, -7,-2.7) 
-        bezierVertex(-6.7,-2.7, -6.7,-1.4, -7,-1)  
-        bezierVertex(-6.3,-.5,   -5.5,1,  -4.7,1)
-        vertex(0, -1) 
-      endShape()
-    } 
-    pop ()
+    //  push ()
+    //  for (let i = 0; i < 8; i++) {
+    //   translate (0,this.wave[i])
+    //   translate (this.pos.x+9,-this.pos.y+7)
+    //   rotate (this.armAng)
+    //   beginShape()
+    //     vertex(0,3)
+    //     bezierVertex(-3,1,     -4,3,    -5,2.7)  
+    //     bezierVertex(-6,2.5,  -9,-.5,   -9,-2)  
+    //     bezierVertex(-9,-3,     -8,-4,     -8,-3.5) 
+    //     bezierVertex(-8,-3,     -8,-2.5,   -7.5,-2)
+    //     bezierVertex(-7.1,-2.7, -7.4,-2.9, -7,-2.7) 
+    //     bezierVertex(-6.7,-2.7, -6.7,-1.4, -7,-1)  
+    //     bezierVertex(-6.3,-.5,   -5.5,1,  -4.7,1)
+    //     vertex(0, -1) 
+    //   endShape()
+    // } 
+    // pop ()
     
     // the old fixed arm
     // vertex(9, 6)

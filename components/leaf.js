@@ -265,5 +265,10 @@ whither() {
   this.wid1 -= (this.wid1 > this.finWid1*0.3)  ? this.growthRate*.001     * this.timer.inc : 0.
   this.wid2 -= (this.wid2 > this.finWid2*0.5)  ? this.growthRate*.002     * this.timer.inc : 0.
   this.wid3 -= (this.wid3 > this.finWid3*0.6)  ? this.growthRate*.001     * this.timer.inc : 0. 
+
+  // turn on newSaeson Switch when the eaves are withered
+  if(this.length <= this.finLength*0.7) {
+    newSeasonSwitch = true
+  }
 }
 }

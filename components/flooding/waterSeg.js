@@ -82,7 +82,7 @@ class WaterSeg {
         let bx0 = this.bezx[i-2]
         let by0 = this.bezy[i-2]
         let bx1 = this.bezx[i]
-        let by1 = this.bezy[i]
+        let by1 = this.bezy[i] 
         let hand = (bx1-bx0)*.3
         bezierVertex(bx0+hand,-by0,  bx1-hand,-by1,  bx1-this.wave[i]/2,-by1+this.wave[i]/2)
         // circle (bx0+hand,-by0,3) 

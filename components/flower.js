@@ -8,6 +8,7 @@ class Flower extends Growable {
     this.lincrement = 10;
     this.wincrement = 10;
     this.dropping = false
+    this.groundLevel = groundLevel
     // Adjust the direction and speed of petal dropping here
     this.dropVector = createVector(random(0, 20), random(0, 20)) 
 
@@ -187,7 +188,7 @@ class Flower extends Growable {
 
   // Drop the flower petals to the ground or off the canvas
   drop() {
-    if(this.pos.y < height-270) {
+    if(this.pos.y < this.groundLevel) {
       // The following adds a little flutter to the dropping petals
       this.pos.y += random(0,10)
       this.pos.x += random(-5,10)

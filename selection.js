@@ -3,13 +3,16 @@ let globalTime = 0
 // The reason we cannot have both growth and no growth in one version (with selection of new seasons), is that things have to be initialised differently in a number of places
 let showGrowth = true
 
+// newSeasonSwitch calls for a new season when switched to true
+let newSeasonSwitch = false
+
 // If death is false, the plants are all living
 // If death is true, the unselected plants die
 let death = false
 
 stormy = false
 
-bulldozer = true
+bulldozer = false
 // excavTime is used to find out when each plant on the left dies (one at a time)
 excavTime = 0
 
@@ -155,6 +158,10 @@ function draw() {
   } else {
   // If the time slider is > 0, plant growth is shown
 
+  if (newSeasonSwitch) {
+    gen0.newSeason()
+    if (newSeasonSwitch) newSeasonSwitch = false
+  }
   gen0.grow()
   gen0.draw()
   }

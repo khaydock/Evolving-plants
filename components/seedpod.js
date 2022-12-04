@@ -49,7 +49,7 @@ class SeedPod extends Growable {
       this.podR += (this.podR < 230) ? 3 * this.timer.inc : 0.
       this.podG += (this.podG < 230) ? 2 * this.timer.inc : 0.
       this.podB += (this.podB < 150) ? 3 * this.timer.inc : 0.
-    
+
     }
     else {
       // makes separation between seeds increase
