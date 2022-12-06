@@ -10,7 +10,7 @@ class Plant extends Growable {
     this.grownUp = grownUp
     this.death = death
     this.deathTime = 0
-    this.generationCounter = generationCounter
+    // this.generationCounter = generationCounter
 
     // bulldozer = true if a bulldozer is coming
     this.bulldozer = bulldozer
@@ -155,7 +155,7 @@ class Plant extends Growable {
       this.stalkTop = new StalkTop(this.pos.x, this.groundLevel - this.thresh, this, this.gobi)
     }
 
-    console.log("numLeaves", this.numLeaves)
+    // console.log("numLeaves", this.numLeaves)
     // console.log ("Leaf Positions", this.leafPositions)
   }
 
@@ -345,13 +345,14 @@ class Plant extends Growable {
 
     pop()
 
-     // Check for a flood
-     if (this.generationCounter % 3 == 0 && this.currHeight >= this.genes.plantHeight ) {
-      console.log ("currH, plantH", this.currHeight, this.genes.plantHeight)
-      stormy = true
-      console.log ("stormy")
-      timeSlider.value(0)
-    }
+    //  // Check for a flood
+    //  if (this.generationCounter % 3 == 0 && this.currHeight >= this.genes.plantHeight ) {
+    //   console.log ("currH, plantH", this.currHeight, this.genes.plantHeight)
+    //   stormy = true
+    //   // death = false
+    //   console.log ("stormy")
+    //   timeSlider.value(0)
+    // }
 
     if (this.gobi > 0) {
       // Draw the cauliflower or broccoli stalk top

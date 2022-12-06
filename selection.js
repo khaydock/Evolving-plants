@@ -10,7 +10,7 @@ let newSeasonSwitch = false
 // If death is true, the unselected plants die
 let death = false
 
-stormy = true
+stormy = false
 
 bulldozer = false
 // excavTime is used to find out when each plant on the left dies (one at a time)

@@ -3,6 +3,7 @@ class Leaf extends Growable {
   // wid1 is closest to the origin
   constructor(pos, angle, finLength, fWid1, fWid2, fWid3, plant) {
     super(finLength)
+    this.generationCounter = generationCounter
     this.death = death
     this.deathTime = 0
     this.plant = plant
@@ -266,8 +267,16 @@ whither() {
   this.wid2 -= (this.wid2 > this.finWid2*0.5)  ? this.growthRate*.002     * this.timer.inc : 0.
   this.wid3 -= (this.wid3 > this.finWid3*0.6)  ? this.growthRate*.001     * this.timer.inc : 0. 
 
-  // turn on newSaeson Switch when the eaves are withered
+  // turn on newSaeson Switch when the leaves are withered
   if(this.length <= this.finLength*0.7) {
+
+    // Check for a flood
+    if (this.generationCounter % 3 == 0) {
+      stormy = true
+      // death = false
+      console.log ("stormy")
+      timeSlider.value(0)
+    }
     newSeasonSwitch = true
   }
 }
