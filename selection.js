@@ -24,6 +24,7 @@ const gen0 = new Generation(4)
 
 let timeSlider 
 // let slider
+let generationCounter = 1
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -163,6 +164,8 @@ function draw() {
     // stormy = false
     death = false
     gen0.newSeason()
+    generationCounter += 1
+    console.log ("Generation", generationCounter)
     if (newSeasonSwitch) newSeasonSwitch = false
   }
   gen0.grow()
