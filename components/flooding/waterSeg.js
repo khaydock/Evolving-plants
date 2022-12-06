@@ -14,25 +14,25 @@ class WaterSeg {
     let sumy = 0
     this.bezx[0] = 0.
     this.bezy[0] = 0.
-      for(let i = 0; i < 8; i++) {
-        const rx = random(1,2)
-        sumx += rx
-        this.bezx.push(sumx)
-      }
-      this.bezx = this.bezx.map(value => floor((value / sumx) * this.segLength))
-
-      for(let i = 0; i < 7; i++) {
-        let ry = random(10,50)
-        this.bezy.push(ry) 
-      }
-      let ry = 0
+    for(let i = 0; i < 8; i++) {
+      const rx = random(1,2)
+      sumx += rx
+      this.bezx.push(sumx)
+    }
+    this.bezx = this.bezx.map(value => floor((value / sumx) * this.segLength))
+    for(let i = 0; i < 7; i++) {
+      let ry = random(10,50)
       this.bezy.push(ry) 
+    }
+    let ry = 0
+    this.bezy.push(ry) 
 
-      // this.bezy = this.bezy.map(value => floor((value / sumy) * this.segLength*.3)) 
-      this.wave = []
-      this.ang = 0
-      this.init()
-    }    
+    // this.bezy = this.bezy.map(value => floor((value / sumy) * this.segLength*.3)) 
+    this.wave = []
+    this.ang = 0
+
+    this.init()
+  }    
     
    init() {
     // Initialise the speed and colour of each water segment
@@ -46,6 +46,7 @@ class WaterSeg {
     // this.waterB = random (120,180)      
    }  
   
+
   flow () {
     // Make the water segment flow from left to right
     // When a water segment goes off the right side of the canvas, it comes back on the left side
@@ -68,9 +69,10 @@ class WaterSeg {
     }
   }
 
+
   show() {
     strokeWeight(2);
-    fill(this.waterR, this.waterG, this.waterB,80)
+    fill(this.waterR, this.waterG, this.waterB,85)
     stroke(this.waterR+10, this.waterG-10, this.waterB+10,100)
     noStroke ()
     push()
@@ -96,26 +98,23 @@ class WaterSeg {
         let by1 = this.bezy[i]
         let hand = (bx0-bx1)*.3
         bezierVertex(bx0-hand,by0,  bx1+hand,by1,  bx1+this.wave[i]/2,by1+this.wave[i]/2)     
-        // circle (bx0+hand,by0,3) 
-        // circle (bx1-hand,by1,5) 
-        // circle (bx1,by1,10) 
       }
         vertex(0, 0)
     endShape()
 
-    // Add a large wet bottom
-     let w = width
-     let g = -120 //height*.75 
-     let d = 150
-     beginShape()
-        //  fill("blue")
-     vertex(-w*3, g-d)
-       bezierVertex(-w*3, g+d*1.1,  -w*2, g+d*1.1,  -w*1, g+d*1.2)
-       bezierVertex(-w*.5, g+d*1.3,  w*1.1,g+d*1.2,   w*1.2,g+d) 
-       bezierVertex(w*.8,g+d*.95,  -w*3, g+d*1.1,  -w*3, g+d)
-       vertex(-w*6, g+d)
-       noStroke()
-   endShape() 
+  //   // Add a large wet bottom
+  //    let w = width
+  //    let g = -120 //height*.75 
+  //    let d = 150
+  //    beginShape()
+  //       //  fill("blue")
+  //    vertex(-w*3, g-d)
+  //      bezierVertex(-w*3, g+d*1.1,  -w*2, g+d*1.1,  -w*1, g+d*1.2)
+  //      bezierVertex(-w*.5, g+d*1.3,  w*1.1,g+d*1.2,   w*1.2,g+d) 
+  //      bezierVertex(w*.8,g+d*.95,  -w*3, g+d*1.1,  -w*3, g+d)
+  //      vertex(-w*6, g+d)
+  //      noStroke()
+  //  endShape() 
   pop()
   }
 }

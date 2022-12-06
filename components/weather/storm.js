@@ -1,5 +1,7 @@
-class StormBackground {
+class StormBackground extends Growable {
   constructor() {
+    super(0)
+    // this.timeSlider = timeSlider
     this.clouds = []
     this.moreClouds = []
     this.rain = []
@@ -33,13 +35,13 @@ class StormBackground {
      // Define each cloud in a random position
      for (let i = 0; i < this.numclouds; i++) {
       let x = random(-width-100,-100);
-      let y = random(-10,300);
+      let y = random(-10,height*.2);
       this.clouds[i] = new Cloud(x, y)
     }
     // Define more clouds at random positions
     for (let i = 0; i < this.numclouds; i++) {
       let x = random(-width-100,-100);
-      let y = random(-10,300);
+      let y = random(-10,height*.2);
       this.moreClouds[i] = new Cloud(x, y)
     }
     // Define a cloudy sky
@@ -98,7 +100,7 @@ class StormBackground {
     hills.draw()
     
     // Lightning
-    if(this.cloudtimer >= 392 && this.cloudtimer <= 400) {
+    if(this.cloudtimer >= 395 && this.cloudtimer <= 400) {
       for(let bolt of this.lightning) {
         bolt.make()
         fill (210,160,210,60)
@@ -107,7 +109,7 @@ class StormBackground {
     }
      
     // It's time to become overcast
-    if (this.cloudtimer >= 200) {
+    if (this.cloudtimer >= 180) {
       this.cloudysky.moveIn()
       this.cloudysky.show()
     }
@@ -134,11 +136,12 @@ class StormBackground {
 
     // Make a flood
     if (this.cloudtimer >= 400 && this.cloudtimer <= 900) {
+      this.flood.move()
       this.flood.show()
     }
 
     // Make some plants get washed away
-    if (this.cloudtimer >= 490 && this.cloudtimer <= 800) {
+    if (this.cloudtimer >= 500 && this.cloudtimer <= 800) {
       // Find out which 1 or 2 plants have longer roots
       // Deselect all the others so they get washed away
       if (!this.done) {
@@ -183,7 +186,7 @@ class StormBackground {
 
 
     // It's time to become cloudier - add moreClouds
-    if (this.cloudtimer >= 100 && this.cloudtimer <= 400) {
+    if (this.cloudtimer >= 100 && this.cloudtimer <= 600) {
       for (let cloud of this.moreClouds) { 
         cloud.show()
         cloud.move()
@@ -197,11 +200,14 @@ class StormBackground {
     }
 
     if (this.cloudtimer > 1000) {
+      newSeasonSwitch = true
+      timeSlider.value(10)
       this.reset()
+      return
     }
 
     // The ground
-    fill(210,120,10,50)
+    fill(220,120,10,50)
     // This rectangle starts to the left of the canvas, so that the left stroke will not be seen
     rect (-10,this.groundLevel,width,height)
     

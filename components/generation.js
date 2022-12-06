@@ -20,7 +20,7 @@ class Generation extends Growable {
       // let xpos = (width*(i+1)/this.nPlants - width/6) + random(-20, 20)
      
       ///////////change grownUp to true to bypass growth, and change growable///not needed
-        console.log ("this.grownUp", this.grownUp)
+        // console.log ("this.grownUp", this.grownUp)
         if (showGrowth) {
           this.grownUp = false
         } else {
@@ -28,7 +28,6 @@ class Generation extends Growable {
         }
       
       this.groundLevel = height *.75
-      console.log ("ggggroundLevel, height", this.groundLevel, height)
       let newPlant = new Plant(xpos, this.groundLevel, this.grownUp) 
 
       this.plants.push(newPlant)
@@ -222,7 +221,7 @@ class Generation extends Growable {
 
     // Make new number of seedpods for each plant
     let newPods = oldPlant.genes.numPods + floor(random(-3, 3))
-    console.log ("NEWPODS", newPods)
+      console.log ("NEWPODS", newPods)
     if (newPods < 2) {
       newPods = floor(random(2,4))
       console.log ("NEWerPODS", newPods)

@@ -68,7 +68,6 @@ class Stem extends Growable {
       } else {
         this.bud = new Bud(this.pos.x, this.pos.y, this.angle*this.dir, 8, this.plant) 
         this.children.push(this.bud)
-        // console.log ("hello stem BUD!", this.pos.x)
         this.plant.allChildren.push(this.leaf)
         
       }

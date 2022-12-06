@@ -9,6 +9,7 @@ class Raindrop {
     noStroke();
     fill(255);
     ellipse(this.x, this.y, random(1, 5), random(1, 5));   
+    // ellipse(this.x, this.y, random(1, 5), random(1, 5));   
   }
 
   update() {

@@ -8,7 +8,7 @@ class Flower extends Growable {
     this.lincrement = 10;
     this.wincrement = 10;
     this.dropping = false
-    this.groundLevel = groundLevel
+    this.groundLevel = height * .75
     // Adjust the direction and speed of petal dropping here
     this.dropVector = createVector(random(0, 20), random(0, 20)) 
 
@@ -36,8 +36,6 @@ class Flower extends Growable {
       this.lastangle = angle
       this.seedpod.update(this.pos, this.angle)
     }
-    
-    // console.log ("hello flower!", this.pos.x)
   }
 
   grow() {
@@ -107,6 +105,7 @@ class Flower extends Growable {
         bezierVertex( 2+winc*.3, -3-linc* .1,           1, 0,                     0,  0);
       endShape();
     pop()
+    // Stamen
     if(this.lincrement > 45 && this.dropping == false){
       push();
         translate(this.pos.x, this.pos.y)
@@ -161,6 +160,7 @@ class Flower extends Growable {
         bezierVertex( 2+winc*.3, -3-linc* .1,          1, 0,                      0,  0);
       endShape();
     pop()
+    // Stamen
     if(this.lincrement > 45 && this.dropping == false){
       push();
         translate(this.pos.x, this.pos.y)
@@ -194,6 +194,7 @@ class Flower extends Growable {
       this.pos.x += random(-5,10)
       this.pos.add(this.dropVector)
 
+      // The following is to signal that stamen disappear
       // this.dropping = true
     }  
   }

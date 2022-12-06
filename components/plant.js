@@ -10,6 +10,7 @@ class Plant extends Growable {
     this.grownUp = grownUp
     this.death = death
     this.deathTime = 0
+    // this.generationCounter = generationCounter
 
     // bulldozer = true if a bulldozer is coming
     this.bulldozer = bulldozer
@@ -327,6 +328,7 @@ class Plant extends Growable {
     bezier(cx, cy, cx + 7, cy - 5, cx + 8, cy - 12, cx, cy - 20)
     bezier(cx, cy, cx - 7, cy - 5, cx - 8, cy - 12, cx, cy - 20)
 
+
     // Draw the roots already grown if grownUp
     if (this.grownUp) {
       for (let root of this.roots) {
@@ -342,6 +344,14 @@ class Plant extends Growable {
     }
 
     pop()
+
+     // Check for a flood
+    //  if (this.generationCounter % 3 == 0 && this.currHeight >= this.genes.plantHeight ) {
+    //   console.log ("currH, plantH", this.currHeight, this.genes.plantHeight)
+    //   stormy = true
+    //   console.log ("stormy")
+    //   timeSlider.value(0)
+    // }
 
     if (this.gobi > 0) {
       // Draw the cauliflower or broccoli stalk top

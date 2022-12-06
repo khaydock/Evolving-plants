@@ -10,7 +10,7 @@ let newSeasonSwitch = false
 // If death is true, the unselected plants die
 let death = false
 
-stormy = false
+stormy = true
 
 bulldozer = false
 // excavTime is used to find out when each plant on the left dies (one at a time)
@@ -20,10 +20,10 @@ excavTime = 0
 //Change the following to set the number of plants in the field.
 const gen0 = new Generation(4) 
 
-let newSeasonButton
+// let newSeasonButton
 
 let timeSlider 
-let slider
+// let slider
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -31,7 +31,6 @@ function setup() {
 
   // Set the groundLevel
   let groundLevel = height * .75
-  console.log ("groundLevel", groundLevel)
 
   stones = []
   for (let i = 0; i < 50; i++) {
@@ -51,20 +50,20 @@ function setup() {
   // Define destruction
   destroy = new Destroy()
 
-  newSeasonButton = createButton('new season')
-  newSeasonButton.position(width/2, 10) 
-  newSeasonButton.mousePressed(() => {
+  // newSeasonButton = createButton('new season')
+  // newSeasonButton.position(width/2, 10) 
+  // newSeasonButton.mousePressed(() => {
 
-    gen0.newSeason()
+  //   gen0.newSeason()
 
-    if (death) death = false
+  //   if (death) death = false
     
-    // print: display new season info with the following line
-    document.querySelector('#selection-info').innerHTML = ''
-    // keep the following commented out
-    // gen0.children.forEach((child, index) => displayPlantInfo(`plant-${index}`, child.genes))
+  //   // print: display new season info with the following line
+  //   document.querySelector('#selection-info').innerHTML = ''
+  //   // keep the following commented out
+  //   // gen0.children.forEach((child, index) => displayPlantInfo(`plant-${index}`, child.genes))
 
-  })
+  // })
 
   timeSlider = createSlider(0, 10, 2,1)
   timeSlider.position(90, 15) 
@@ -159,6 +158,10 @@ function draw() {
   // If the time slider is > 0, plant growth is shown
 
   if (newSeasonSwitch) {
+    console.log ('newSeason Switch', newSeasonSwitch)
+    storm.reset()
+    // stormy = false
+    death = false
     gen0.newSeason()
     if (newSeasonSwitch) newSeasonSwitch = false
   }

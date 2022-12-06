@@ -20,7 +20,7 @@ class Seed extends Growable {
     this.seedB = 20
 
     // Create the random points just above the ground to drop the seeds to
-    this.groundLevel = height *.75
+    this.groundLevel = height * .75
     this.dropPoint = createVector(
       random(0, width),
       this.groundLevel

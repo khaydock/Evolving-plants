@@ -34,7 +34,7 @@ class Person {
         bezierVertex(8,12,     5,8,     9.5,5) 
         bezierVertex(9.5,5,   9,4.3,   9,4.3) 
         // chin
-        bezierVertex(9,4.3,   7.5,5.3, 7.3,4.8) 
+        bezierVertex(9,4.3,   7.5,5.3, 7.3,4.9) 
         bezierVertex(6.8,4.5, 7,4.3,   7,4.3) 
         // mouth
         bezierVertex(7,4.3,   6.3,4.3,  6.6,4-random()) 

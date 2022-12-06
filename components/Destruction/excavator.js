@@ -88,8 +88,8 @@ class Excavator {
     pop()
 
     if (this.goingBack) {
-       this.person.move()
-    this.person.show()
+      this.person.move()
+      this.person.show()
     }
    
   } 

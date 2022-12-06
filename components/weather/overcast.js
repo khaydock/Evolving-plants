@@ -16,8 +16,7 @@ class Overcast {
   
   moveIn() {
     // The droplets move in from off the canvas to their positions on the canvas 
-    let stop = width
-    this.pos.x += (this.pos.x <= stop)? 3:0
+    this.pos.x += (this.pos.x <= width)? 3:0
   }
 
   moveOut() {

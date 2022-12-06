@@ -17,7 +17,6 @@ class Bud extends Growable {
     this.plantG = 240
     this.plantB = 10
 
-    // console.log ("hello budflower!", this.pos.x)
     this.flower = new Flower(
       this.pos.x, 
       this.pos.y,
@@ -35,7 +34,6 @@ class Bud extends Growable {
     this.pos = pos
     this.angle = angle
     this.flower.update(pos, angle)
-    // console.log ("hello bud!", this.pos.x)
   }
  
   grow() {
