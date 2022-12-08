@@ -1,5 +1,5 @@
 class StalkTop extends Growable {
-  // This makes the stalk top for broccoli and cauliflower
+  // Makes the stalk top for broccoli and cauliflower
   // Each stalk top has a number of branches on it 
   // Each branch has many stems 
   // Each stem has one bud
@@ -12,7 +12,7 @@ class StalkTop extends Growable {
   // The branchWidth need not be a selection variable
   // There is a random mutation in genes that causes cauliflower (if gobi=1) or broccoli (if gobi=2)
   // This mutation delays the buds from producing flowers and seedpods and makes a broccoli or cauliflower stalkTop instead
-  // After a delay, a stalk bolts: it grows up the plantHeight and produces regular buds, flowers, & seedpods 
+  // After a delay (NOT WORKING), a stalk bolts: it grows up the plantHeight and produces regular buds, flowers, & seedpods 
 
   // Cauliflower is similar to broccoli except for the colour and bud shape, and it should grow closer to the ground, surrounded by leaves, and the buds have a different shape
 
@@ -22,8 +22,11 @@ class StalkTop extends Growable {
     super()
     this.pos = createVector(x, y)
     this.plant = plant
+    this.groundLevel = height * .75
     this.death = death
+    // deathTime and deathAng count the rotation and flow during death
     this.deathTime = 0
+    this.deathAng = 0
     this.gobi = gobi
     if (this.gobi == 1) {
       this.gobiHeight = ((this.plant.genes.plantHeight - this.plant.genes.thresh)*.3)
@@ -133,11 +136,19 @@ class StalkTop extends Growable {
         this.pos.x += flow * this.deathTime* .02
         this.pos.y -= (this.deathTime < 70) ? this.deathTime*.02 : 0
       }
+      if (this.deathAng < 90) {
+        this.deathAng += 1
+      }
     }
     push()
-    translate (this.pos.x, this.pos.y)
+    // The stalk top falls down with the plant
+    // The axis of rotation is at the base of the plant, not the base of the stalkTop
+    translate (this.pos.x, this.groundLevel)
+    rotate(this.deathTime+1)
+    translate (-this.pos.x, -this.groundLevel)
 
     // Draw the stalk top
+    translate (this.pos.x, this.pos.y)
     line(0, 0, 0, -this.currHeight) 
     
     // Draw the branches 

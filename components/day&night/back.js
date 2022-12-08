@@ -84,6 +84,7 @@ class Back {
     if ((this.time > 8.5 && this.am == false) || (this.time < 7 && this.am == true)) { 
       // The sky gets blacker or less black, depending on darkness
       fill (16,16,16,this.darkness*7)
+      noStroke()
       rect (0,0,width,height)
       stroke(255,255,255,this.darkness)
       this.sky.turn()

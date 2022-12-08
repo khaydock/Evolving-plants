@@ -10,6 +10,11 @@ class Bud extends Growable {
     this.length = budlength
     this.plant = plant
 
+    // deathTime and deathAng count the rotation and flow during death
+    this.deathTime = 0
+    this.deathAng = 0
+    // dirAng is for buds on different sides of the stalk
+    this.dirAng = -1
 
     this.bx = 0 
     // The initial bud colours:
@@ -80,7 +85,30 @@ class Bud extends Growable {
     fill(this.plantR-amount,this.plantG-amount, this.plantB-amount)
     // stroke(30, 240, 10)
     // fill(30, 240, 10)
-    strokeWeight(1);
+    strokeWeight(1)
+
+// The plant falls over
+if (death && !this.plant.selected) {
+  // limit determines how far the plant moves to the right as it falls over
+  let limit = 200
+  if (bulldozer) limit = 70
+  // flow determines how fast the plants move to the right
+  let flow = 1
+  if (stormy) flow = 10
+  if (this.deathTime < limit) {
+    this.deathTime += 1
+    this.pos.x += flow * this.deathTime* .02
+    this.pos.y -= (this.deathTime < 70) ? this.deathTime*.02 : 0
+  }
+  if (this.deathAng < 1) {
+    this.deathAng += 1
+    this.angle += .4 * this.dirAng
+  } else {
+    this.dirAng = -this.dirAng
+    this.deathAng = 0
+  }
+}
+
     push()    
       translate(this.pos.x, this.pos.y)
       rotate(this.angle)

@@ -10,7 +10,8 @@ class Flower extends Growable {
     this.dropping = false
     this.groundLevel = height * .75
     // Adjust the direction and speed of petal dropping here
-    this.dropVector = createVector(random(0, 20), random(0, 20)) 
+    // To make them fall on the visible ground, change to (random(0,20), random(0,20))
+    this.dropVector = createVector(random(25,40), random(.02,.05)) 
 
     this.seedpod = new SeedPod(
       this.pos.x,
@@ -186,16 +187,16 @@ class Flower extends Growable {
     }
   }
 
-  // Drop the flower petals to the ground or off the canvas
+  // To drop the flower petals to the ground, remove the +100
   drop() {
-    if(this.pos.y < this.groundLevel) {
+    if(this.pos.y < this.groundLevel+100) {
       // The following adds a little flutter to the dropping petals
       this.pos.y += random(0,10)
       this.pos.x += random(-5,10)
       this.pos.add(this.dropVector)
 
       // The following is to signal that stamen disappear
-      // this.dropping = true
+      this.dropping = true
     }  
   }
   drawStamen(stalen) {

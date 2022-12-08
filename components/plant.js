@@ -275,14 +275,16 @@ class Plant extends Growable {
     //Let the plant fall over if it was not selected and death = true
     push()
     if (death && !this.selected) {
+      // console.log ("plant says fall")
       translate(this.pos.x, this.pos.y)
-      rotate(this.deathTime + random(0, 2))
+      rotate(this.deathTime + 1) //+ random(0, 2))
       translate(-this.pos.x, -this.pos.y)
     }
 
 
     // Draw a circle to show that the plant is selected 
-    if (this.selected && (!stormy && !bulldozer)) {
+    if (this.selected && (timeSlider.value() != 0)) {
+    // if (this.selected && (!stormy && !bulldozer)) {
       // if(this.selected)) {
       stroke('red')
       strokeWeight(3)
@@ -342,17 +344,8 @@ class Plant extends Growable {
         root.draw()
       }
     }
-
     pop()
 
-    //  // Check for a flood
-    //  if (this.generationCounter % 3 == 0 && this.currHeight >= this.genes.plantHeight ) {
-    //   console.log ("currH, plantH", this.currHeight, this.genes.plantHeight)
-    //   stormy = true
-    //   // death = false
-    //   console.log ("stormy")
-    //   timeSlider.value(0)
-    // }
 
     if (this.gobi > 0) {
       // Draw the cauliflower or broccoli stalk top

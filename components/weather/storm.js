@@ -9,7 +9,7 @@ class StormBackground extends Growable {
 
     this.numclouds = 8
 
-    this.lightx = 200
+    this.lightx = width*.3
     this.lighty = 0
     this.lightw = 10
 
@@ -95,7 +95,8 @@ class StormBackground extends Growable {
     background(this.changeR, this.changeG, this.changeB)
 
     // Draw the hills in a static daytime colour 
-    fill(100,190,200,200)  
+    fill(100,180,200,200)  //(100,190,200,200)
+    // fill(190,100,80,40) 
     noStroke()
     hills.draw()
     
@@ -209,7 +210,7 @@ class StormBackground extends Growable {
     // The ground
     fill(220,120,10,50)
     // This rectangle starts to the left of the canvas, so that the left stroke will not be seen
-    rect (-10,this.groundLevel,width,height)
+    rect (-10,this.groundLevel,width+10,height)
     
   }
 }

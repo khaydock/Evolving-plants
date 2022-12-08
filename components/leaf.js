@@ -267,11 +267,11 @@ whither() {
   this.wid2 -= (this.wid2 > this.finWid2*0.5)  ? this.growthRate*.002     * this.timer.inc : 0.
   this.wid3 -= (this.wid3 > this.finWid3*0.6)  ? this.growthRate*.001     * this.timer.inc : 0. 
 
-  // turn on newSaeson Switch when the leaves are withered
-  if(this.length <= this.finLength*0.7) {
+  // turn on newSeason Switch when the leaves are withered
+  if(this.length <= this.finLength*0.8) { //7) {
 
     // Check for a flood
-    if (this.generationCounter % 3 == 0) {
+    if (this.generationCounter % 3 == 0 && !bulldozer) {
       stormy = true
       // death = false
       console.log ("stormy")

@@ -3,6 +3,7 @@ let globalTime = 0
 // The reason we cannot have both growth and no growth in one version (with selection of new seasons), is that things have to be initialised differently in a number of places
 let showGrowth = true
 
+// To reinstall a new season button, comment out all references to newSeasonSwitch and uncomment all references to the newSeasonButton
 // newSeasonSwitch calls for a new season when switched to true
 let newSeasonSwitch = false
 
@@ -10,8 +11,10 @@ let newSeasonSwitch = false
 // If death is true, the unselected plants die
 let death = false
 
+// When stormy is true, a storm and flood occur
 stormy = false
 
+// When bulldozer is true, a bulldozer destroys most of the crop
 bulldozer = false
 // excavTime is used to find out when each plant on the left dies (one at a time)
 excavTime = 0
@@ -20,6 +23,7 @@ excavTime = 0
 //Change the following to set the number of plants in the field.
 const gen0 = new Generation(4) 
 
+// Uncomment the following to have a new season button, also uncomment more in setup
 // let newSeasonButton
 
 let timeSlider 
@@ -51,6 +55,7 @@ function setup() {
   // Define destruction
   destroy = new Destroy()
 
+  // Uncomment the following section to get new season button
   // newSeasonButton = createButton('new season')
   // newSeasonButton.position(width/2, 10) 
   // newSeasonButton.mousePressed(() => {
@@ -160,8 +165,9 @@ function draw() {
 
   if (newSeasonSwitch) {
     console.log ('newSeason Switch', newSeasonSwitch)
+    // Reset so that only one storm occurs
+    stormy = false
     storm.reset()
-    // stormy = false
     death = false
     gen0.newSeason()
     generationCounter += 1

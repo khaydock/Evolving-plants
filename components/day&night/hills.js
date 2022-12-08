@@ -24,6 +24,6 @@ this.curve = 0
     endShape() 
     // The ground
   fill(210,120,10,120)
-  rect (0,this.groundLevel,width,height)
+  rect (-10,this.groundLevel,width+10,height)
   }
 }
