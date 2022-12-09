@@ -20,13 +20,14 @@ class StalkTop extends Growable {
  
   constructor(x, y, plant, gobi) {
     super()
+    // (x,y) is the position of the base of the plant stalk
+    // the base of the plant is at (x, y+thresh)
     this.pos = createVector(x, y)
     this.plant = plant
     this.groundLevel = height * .75
     this.death = death
-    // deathTime and deathAng count the rotation and flow during death
+    // deathTime counts the rotation and flow during death
     this.deathTime = 0
-    this.deathAng = 0
     this.gobi = gobi
     if (this.gobi == 1) {
       this.gobiHeight = ((this.plant.genes.plantHeight - this.plant.genes.thresh)*.3)
@@ -136,16 +137,13 @@ class StalkTop extends Growable {
         this.pos.x += flow * this.deathTime* .02
         this.pos.y -= (this.deathTime < 70) ? this.deathTime*.02 : 0
       }
-      if (this.deathAng < 90) {
-        this.deathAng += 1
-      }
     }
     push()
     // The stalk top falls down with the plant
     // The axis of rotation is at the base of the plant, not the base of the stalkTop
-    translate (this.pos.x, this.groundLevel)
-    rotate(this.deathTime+1)
-    translate (-this.pos.x, -this.groundLevel)
+    translate (this.pos.x, this.pos.y+this.plant.genes.thresh)
+    rotate(this.deathTime)
+    translate (-this.pos.x, -this.pos.y-this.plant.genes.thresh)
 
     // Draw the stalk top
     translate (this.pos.x, this.pos.y)

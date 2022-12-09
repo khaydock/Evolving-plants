@@ -11,7 +11,7 @@ let newSeasonSwitch = false
 // If death is true, the unselected plants die
 let death = false
 
-// When stormy is true, a storm and flood occur
+// When stormy is true, a storm and flood occur - stormy is made true at random times in leaf.js
 stormy = false
 
 // When bulldozer is true, a bulldozer destroys most of the crop

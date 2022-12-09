@@ -252,7 +252,7 @@ class Plant extends Growable {
     // If death is true, unselected plants die
     if (death && !this.selected) {
 
-      // Increase limit to make plant rotate further when falling down
+      // Increase limit to make plant rotate further (and travel further) when falling down
       let limit = 200
       if (bulldozer) limit = 70
       let flow = 1
@@ -277,7 +277,7 @@ class Plant extends Growable {
     if (death && !this.selected) {
       // console.log ("plant says fall")
       translate(this.pos.x, this.pos.y)
-      rotate(this.deathTime + 1) //+ random(0, 2))
+      rotate(this.deathTime) //+ random(0, 2))
       translate(-this.pos.x, -this.pos.y)
     }
 

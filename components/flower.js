@@ -22,8 +22,8 @@ class Flower extends Growable {
       this.pos
     )
     this.children = [this.seedpod]
-
   }
+
 
   update(pos, angle) {
     if(this.time > 200) {
@@ -39,23 +39,22 @@ class Flower extends Growable {
     }
   }
 
+
   grow() {
-     //TRY THIS !!!!!!
      if (timeSlider.value() == 0) {
       this.grow
       this.growChildren()
       return
     }
-
     if(this.time > 50) {
       this.growChildren()
     }
     else if(this.time > 0){
       this.lincrement += 1 * this.timer.inc
       this.wincrement += 1 * this.timer.inc
-
     }
   }
+
 
   grown() {
     // Do not grow any flower
@@ -132,6 +131,7 @@ class Flower extends Growable {
     }
   }
 
+
   drawFront() {
     // Draw front flower petals
     // stroke(250, 200, 0);
@@ -187,8 +187,9 @@ class Flower extends Growable {
     }
   }
 
-  // To drop the flower petals to the ground, remove the +100
+
   drop() {
+    // To drop the flower petals to the ground, remove the +100
     if(this.pos.y < this.groundLevel+100) {
       // The following adds a little flutter to the dropping petals
       this.pos.y += random(0,10)
@@ -199,6 +200,8 @@ class Flower extends Growable {
       this.dropping = true
     }  
   }
+
+  
   drawStamen(stalen) {
     // Draw a stamen in the flower beginning at (0,0) of length abs(stalen)
     // If stalen < 0, rotate the anther counterclockwise

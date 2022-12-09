@@ -9,8 +9,7 @@ class Leaf extends Growable {
     this.plant = plant
     this.pos = pos
     this.angle = angle
-    this.deathAng = 0
-    this.dirAng = -1
+   
     this.length = 10
     this.wid1 = fWid1/10
     this.wid2 = fWid2/15
@@ -108,13 +107,6 @@ class Leaf extends Growable {
         this.deathTime += 1
         this.pos.x += flow * this.deathTime* .02
         this.pos.y -= (this.deathTime < 70) ? this.deathTime*.02 : 0
-      }
-      if (this.deathAng < 1) {
-        this.deathAng += 1
-        this.angle += .4 * this.dirAng
-      } else {
-        this.dirAng = -this.dirAng
-        this.deathAng = 0
       }
     }
 
@@ -268,7 +260,7 @@ whither() {
   this.wid3 -= (this.wid3 > this.finWid3*0.6)  ? this.growthRate*.001     * this.timer.inc : 0. 
 
   // turn on newSeason Switch when the leaves are withered
-  if(this.length <= this.finLength*0.8) { //7) {
+  if(this.length <= this.finLength*0.7) { 
 
     // Check for a flood
     if (this.generationCounter % 3 == 0 && !bulldozer) {

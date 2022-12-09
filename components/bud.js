@@ -10,11 +10,8 @@ class Bud extends Growable {
     this.length = budlength
     this.plant = plant
 
-    // deathTime and deathAng count the rotation and flow during death
+    // deathTime counts the rotation and flow during death
     this.deathTime = 0
-    this.deathAng = 0
-    // dirAng is for buds on different sides of the stalk
-    this.dirAng = -1
 
     this.bx = 0 
     // The initial bud colours:
@@ -99,13 +96,6 @@ if (death && !this.plant.selected) {
     this.deathTime += 1
     this.pos.x += flow * this.deathTime* .02
     this.pos.y -= (this.deathTime < 70) ? this.deathTime*.02 : 0
-  }
-  if (this.deathAng < 1) {
-    this.deathAng += 1
-    this.angle += .4 * this.dirAng
-  } else {
-    this.dirAng = -this.dirAng
-    this.deathAng = 0
   }
 }
 
