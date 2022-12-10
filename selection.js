@@ -23,12 +23,14 @@ excavTime = 0
 //Change the following to set the number of plants in the field.
 const gen0 = new Generation(4) 
 
-// Uncomment the following to have a new season button, also uncomment more in setup
+// Uncomment the following to have a new season button (also uncomment section in setup)
 // let newSeasonButton
 
 let timeSlider 
 // let slider
 let generationCounter = 1
+
+
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -50,7 +52,7 @@ function setup() {
 
    hills = new Hills()
    back = new Back()
-   storm = new StormBackground()
+   storm = new Storm()
 
   // Define destruction
   destroy = new Destroy()
@@ -116,23 +118,21 @@ function draw() {
 
     }
 
-     // Check for the occasional storm
-    // (at some random time ?????)
+    // Check for the occasional storm (behind plants)
     if (stormy) {
       storm.move()
       storm.draw()
     }
+    
+     // Draw (fully grown) plants
+     gen0.grown()
+     gen0.draw()
 
-  // Draw (fully grown) plants
-  gen0.grown()
-  gen0.draw()
-
-    // Check for the bulldozer
-    // (If ____ then destroy ?????)
+      // Check for the bulldozer (in front of plants)
     if (bulldozer) { 
       destroy.draw()
     }
-    
+ 
     // Kill half the plants if a storm or bulldozer comes
     // Only selected plants will survive - the rest will be knocked over
     if (stormy || bulldozer) {
@@ -164,10 +164,11 @@ function draw() {
   // If the time slider is > 0, plant growth is shown
 
   if (newSeasonSwitch) {
-    console.log ('newSeason Switch', newSeasonSwitch)
-    // Reset so that only one storm occurs
+    // Reset so that only one storm or bulldozer occurs
     stormy = false
     storm.reset()
+    bulldozer = false
+    destroy.reset()
     death = false
     gen0.newSeason()
     generationCounter += 1
@@ -197,11 +198,11 @@ function mousePressed() {
 
       let currPlant = p.toggleSelect()
       if(currPlant.selected) { 
-        displayPlantInfo(`plant-${i}`, currPlant.genes)
+        // displayPlantInfo(`plant-${i}`, currPlant.genes)
         gen0.selectedPlants.push(currPlant)   
       } 
       else {
-        hidePlantInfo(`plant-${i}`)
+        // hidePlantInfo(`plant-${i}`)
       } 
     } 
   }

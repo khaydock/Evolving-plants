@@ -24,7 +24,6 @@ class Plant {
     stroke(180, 280, 20);
   
     push()
-    // console.log(this.pos)
     translate(this.pos.x, this.pos.y)
     Array.from(sentence).forEach(current => {
       if (current == "F") {

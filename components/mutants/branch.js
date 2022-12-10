@@ -28,7 +28,6 @@ class Branch  extends Growable {
 
   this.angle = random (-70,70)
   this.numBuds = 3 + this.plant.genes.numPods
-  // console.log ("numBuds", this.numBuds, "brThresh", this.brThresh)
 
   this.growthRate = 1
   
@@ -53,7 +52,6 @@ class Branch  extends Growable {
     for(let i = 0; i < 3; i++) {
       this.budPositions.push(this.branchLength)             
     }
-    // console.log ("BudPos", this.budPositions)
 
     // Define the stems  
     this.budStemLen = random (5,10)// (1,5)//(10,50)
@@ -76,7 +74,6 @@ class Branch  extends Growable {
     this.budStems.push(stem)
     stem = new mutantStem(this.pos.x, this.branchLength, this.budStemLen, this.budStemWid, this.gobi)
     this.budStems.push(stem)
-    // console.log ("budStems", this.budStems)
 
     // Define the branch colour for broccoli
     this.branchR = 80

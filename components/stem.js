@@ -37,8 +37,6 @@ class Stem extends Growable {
     }
   
     init() {
-      // console.log('this.pos0.y', height-this.pos0.y)
-
       // Decide whether to put a leaf or bud on the stem 
       if (this.hasLeaf == true) {
 

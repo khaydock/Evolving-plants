@@ -67,14 +67,6 @@ class Leaf extends Growable {
       this.wid3 += (this.wid3 < this.finWid3)  ? this.growthRate*.03 * this.timer.inc : 0.
  
     }
- 
-    // if(this.time == this.timer.bp) { 
-    //   console.log("leaf growing end: params")
-    //   console.log("Leaf Length",this.length) // 100
-    //   console.log(this.wid1) // 30.3
-    //   console.log(this.wid2) // 30.3
-    //   console.log(this.wid3) // 30.3
-
   }
 
   grown() {
@@ -265,10 +257,17 @@ whither() {
     // Check for a flood
     if (this.generationCounter % 3 == 0 && !bulldozer) {
       stormy = true
-      // death = false
       console.log ("stormy")
       timeSlider.value(0)
     }
+
+     // Check for a bulldozer
+     if (this.generationCounter % 4 == 0 && !stormy) {
+      bulldozer = true
+      console.log ("bulldozer")
+      timeSlider.value(0)
+    }
+
     newSeasonSwitch = true
   }
 }

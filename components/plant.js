@@ -68,7 +68,7 @@ class Plant extends Growable {
 
       this.setGenes(randomGenes)
     }
-    // console.log ("this.thresh", this.thresh, "plantHeight", this.plantHeight)
+
     this.init()
   }
 
@@ -101,7 +101,6 @@ class Plant extends Growable {
       const r = Math.random()
       sum += r
       this.leafPositions.push(sum)
-      // console.log ("LEAF POSITIONS", this.leafPositions)
     }
     // Map the random leaf positions to be between the beginning of the stalk and thresh
     this.leafPositions = this.leafPositions.map(value => Math.floor((value / sum) * this.thresh))
@@ -129,14 +128,12 @@ class Plant extends Growable {
         let place = this.groundLevel - this.leafPositions[i]
         let leaf = new Stem(this.pos.x, place, this.dir, this, true)
         this.stems.push(leaf)
-        // console.log ("LEAF HERE", this.stems)
         this.children.push(leaf)
       }
       for (let i = 0; i < this.numPods; i++) {
         // Put the pods on alternate sides usually
         const ranDir = Math.random() < 0.1 ? 1 : -1
         this.dir = this.dir * ranDir
-        // console.log ("Pod no", i,"DIR", this.dir)
         let pod = new Stem(this.pos.x, this.groundLevel - this.podPositions[i], this.dir, this, false)
         this.stems.push(pod)
         this.children.push(pod)
@@ -154,9 +151,6 @@ class Plant extends Growable {
     if (this.gobi > 0) {
       this.stalkTop = new StalkTop(this.pos.x, this.groundLevel - this.thresh, this, this.gobi)
     }
-
-    // console.log("numLeaves", this.numLeaves)
-    // console.log ("Leaf Positions", this.leafPositions)
   }
 
 
@@ -275,9 +269,8 @@ class Plant extends Growable {
     //Let the plant fall over if it was not selected and death = true
     push()
     if (death && !this.selected) {
-      // console.log ("plant says fall")
       translate(this.pos.x, this.pos.y)
-      rotate(this.deathTime) //+ random(0, 2))
+      rotate(this.deathTime) //+ random(0, 2)) random may slow things down too much
       translate(-this.pos.x, -this.pos.y)
     }
 

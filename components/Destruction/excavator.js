@@ -1,7 +1,8 @@
-class Excavator {
+class Excavator extends Growable{
   // Makes and moves an excavator (sort of bulldozer)
   // ( called by Destroy() )
   constructor(x,y){
+    super()
     // x,y is the position of the right (front) axel
     this.pos = createVector(x, y)
     this.speed = 2 
@@ -38,17 +39,24 @@ class Excavator {
   move() {
     // Move the excavator from left to right and back
     if (this.pos.x < width*.32 && this.goingBack == false) {
+      // Move forward
       this.pos.x += this.speed  
 
-       // Move the clumps of earth
-    this.clumpPos += (this.clumpPos < width*.66) ? 2 : 0
+      // Move the clumps of earth
+      this.clumpPos += (this.clumpPos < width*.66) ? 2 : 0
 
     } else {
       this.goingBack = true
     }
-    
+      // Move back
     if (this.pos.x > -width*.42 && this.goingBack == true) {
       this.pos.x -= this.speed 
+      if (this.pos.x <= -width*.42) {
+        newSeasonSwitch = true
+        timeSlider.value(10)
+        this.reset()
+        return
+      }
     }
   }
 

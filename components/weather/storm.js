@@ -1,7 +1,6 @@
-class StormBackground extends Growable {
+class Storm extends Growable {
   constructor() {
     super(0)
-    // this.timeSlider = timeSlider
     this.clouds = []
     this.moreClouds = []
     this.rain = []
