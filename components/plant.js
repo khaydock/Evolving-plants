@@ -10,7 +10,6 @@ class Plant extends Growable {
     this.grownUp = grownUp
     this.death = death
     this.deathTime = 0
-    // this.generationCounter = generationCounter
 
     // bulldozer = true if a bulldozer is coming
     this.bulldozer = bulldozer
@@ -19,8 +18,6 @@ class Plant extends Growable {
     // Count the width of the growing plant with currWidth
     this.currWidth = 1
     this.finalWidth = 9
-    this.boltSwitch = false
-    this.count = 0
 
     this.allChildren = []
 
@@ -155,35 +152,17 @@ class Plant extends Growable {
 
 
   grow() {
-
+    
     // The width will grow until finalWidth is reached.
     if (this.currWidth <= this.finalWidth) {
       this.currWidth += .01 * this.timer.inc
     }
-    // The stalk will grow.
-    // The stalk will stop growing at plantHeight,
-    // except it will pause at thresh for cauliflower and broccoli to grow,
-    // and then, it will bolt (go to seed), growing to plantHeight.
-    // The bolting will be switched on by boltSwitch
-    let top = this.plantHeight
-    if (this.gobi > 0) {
-      top = this.thresh + 2
-      this.gobiTime = this.time
-    }
-    if (this.boltSwitch) {
-      top = this.plantHeight
-    }
-
-    // Turn the switch to make a stalk bolt up
-    if (this.time >= top && !this.boltSwitch && this.gobi > 0) {
-      this.boltSwitch = !this.boltSwitch
-      this.currHeight = this.thresh
-      this.time = this.currHeight
-      top = this.plantHeight
-    }
+    
+      // How to make this.time stop for awhile while gobi grows?????
+      // ... too difficult
 
     // The height grows
-    if (this.time <= top) {
+    if (this.time <= this.plantHeight) {
       this.currHeight += 1 * this.timer.inc
 
       // Start growing a stem & leaf when the stalk reaches the leaf stem position
@@ -208,9 +187,7 @@ class Plant extends Growable {
       }
 
       // Start growing a stem & bud/flower/seedpod when the stalk reaches the pod stem position,
-      if (
-        (this.gobi == 0 || this.boltSwitch) &&
-        this.podPositionsIndex < this.podPositions.length &&
+      if (this.podPositionsIndex < this.podPositions.length &&
         this.time >= this.podPositions[this.podPositionsIndex] - this.timer.inc &&
         this.time <= this.podPositions[this.podPositionsIndex] + this.timer.inc) {
 
