@@ -19,7 +19,7 @@ class Generation extends Growable {
       xpos = xpos + random(-sep*.4, sep*.4)
       // let xpos = (width*(i+1)/this.nPlants - width/6) + random(-20, 20)
      
-      ///////////change grownUp to true to bypass growth, and change growable///not needed
+      // To bypass growth, the following is needed: 
         if (showGrowth) {
           this.grownUp = false
         } else {
@@ -38,25 +38,27 @@ class Generation extends Growable {
     // Grow all plants
     this.growChildren()
 
-    // Directs the dropping of all seeds of selected plants
-    for(let i = 0; i < this.plants.length; i++) {
-      let p = this.plants[i]
-      if(p.selected == true) {
-        p.dropSeeds()
-      }
-    }
+    // THE FOLLOWING IS NOT USED 
+    // rather, seed dropping occurs when this.growChildren calls seed.grow
+    // // Directs the dropping of all seeds of selected plants
+    // for(let i = 0; i < this.plants.length; i++) {
+    //   let p = this.plants[i]
+    //   if(p.selected == true) {
+    //     p.dropSeeds()
+    //   }
+    // }
   }
 
   grown() {
     this.grownChildren()
 
-    // Directs the making and dropping of seeds of each plant
-    for(let i = 0; i < this.plants.length; i++) {
-      let p = this.plants[i]
-      if(p.selected == true) {
-        p.dropSeeds()
-      }
-    }
+    // // Directs the making and dropping of seeds of each plant
+    // for(let i = 0; i < this.plants.length; i++) {
+    //   let p = this.plants[i]
+    //   if(p.selected == true) {
+    //     p.dropSeeds()
+    //   }
+    // }
   }
 
   draw() {
@@ -76,7 +78,7 @@ class Generation extends Growable {
   
     // For each plant in the selectedPlants array, all its seeds are put in the dropped seeds array
     
-    // Filter puts every child from the plant.allChildren array that is an instanceof seeds into the seeds array)
+    // Filter puts every child from the plant.allChildren array that is an instanceof seeds into the seeds array
     selectedPlants.forEach(plant => {
       let seeds = plant.allChildren.filter(child => child instanceof Seed)
       // ... means to extract all the individual properties one by one and transfer them to the new object 

@@ -342,20 +342,20 @@ class Plant extends Growable {
     this.selected = this.selected === true ? false : true
     return this
   }
-
+// Apparaently the following is not used ??????
   // Dropping seeds after the plant is selected
   dropSeeds() {
-    this.stems.forEach(stem => {
-      if (stem.seedpod != null) {
-        let seeds = stem.seedpod.seeds
-        seeds.forEach(seed => {
-          seed.dropping = true
-          if (seed.dropVector != null) return
-          // If no seeds were selected, all seeds are selected
-          seed.dropVector = p5.Vector.sub(seed.dropPoint, seed.pos).normalize().mult(10)
-        })
-      }
-    })
+    // this.stems.forEach(stem => {
+    //   if (stem.seedpod != null) {
+    //     let seeds = stem.seedpod.seeds
+    //     seeds.forEach(seed => {
+    //       seed.dropping = true
+    //       if (seed.dropVector != null) return
+    //       // If no seeds were selected, all seeds are selected
+    //       seed.dropVector = p5.Vector.sub(seed.dropPoint, seed.pos).normalize().mult(10)
+    //     })
+    //   }
+    // })
   }
 
 

@@ -83,7 +83,10 @@ function setup() {
 
 
 function draw() {
-  background(120,160,230)
+
+  if (!bulldozer) {
+    background(120,160,230)  
+  }
 
    // Draw the hills in a static daytime colour 
    colorMode(RGB)
@@ -164,7 +167,7 @@ function draw() {
   // If the time slider is > 0, plant growth is shown
 
   if (newSeasonSwitch) {
-    // Reset so that only one storm or bulldozer occurs
+    // Reset so that only one storm or bulldozer occurs at a time
     stormy = false
     storm.reset()
     bulldozer = false
@@ -194,7 +197,7 @@ function mousePressed() {
       mouseY > 10 && mouseY < height-20 && mouseY > 50)
     {
       // Draw circle as soon as plant is selected,
-      // but selection is possible only if plant has reached its final height 
+      // but selection is possible only if plant has reached its final height (see toggleSelect)
 
       let currPlant = p.toggleSelect()
       if(currPlant.selected) { 

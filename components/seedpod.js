@@ -42,6 +42,7 @@ class SeedPod extends Growable {
 
   grow() {  
     this.growChildren()
+    // seed is the child of seedpod, and this will tell the seeds to drop
 
     if(this.time > 550){
       // Begin changing seedpod colour at 550

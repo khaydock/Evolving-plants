@@ -48,7 +48,7 @@ class Flood {
       }
     }
      // Add a large wet bottom
-     fill(this.waterR, this.waterG, this.waterB,90)
+     fill(this.waterR, this.waterG, this.waterB,92)
      noStroke()
      let w = width
      // the large wet spot will extend to a depth of groundLevel - d

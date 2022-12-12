@@ -72,19 +72,19 @@ class Storm extends Growable {
   draw() {
     // Set background changes
     //Getting stormy
-    if (this.cloudtimer > 260 && this.cloudtimer < 400) {
+    if (this.cloudtimer > 400 && this.cloudtimer < 510) { // was 260, 400
       this.changeR -= .3;
       this.changeG -= .3;
       this.changeB -= .6;
     }
     // Grey sky while raining
-    if (this.cloudtimer > 400 && this.cloudtimer < 600) {
+    if (this.cloudtimer > 500 && this.cloudtimer < 700) { // was 400, 600
       this.changeR = 160;
       this.changeG = 165;
       this.changeB = 180;
     }
     // Sky clearing up
-    if (this.cloudtimer > 400) {
+    if (this.cloudtimer > 500) { // was 400
       if (this.changeR > 141) {
         this.changeR -= .04;
         this.changeG -= .04;
@@ -100,7 +100,7 @@ class Storm extends Growable {
     hills.draw()
     
     // Lightning
-    if(this.cloudtimer >= 395 && this.cloudtimer <= 400) {
+    if(this.cloudtimer >= 495 && this.cloudtimer <= 500) { // was 395 400
       for(let bolt of this.lightning) {
         bolt.make()
         fill (210,160,210,60)
@@ -109,25 +109,25 @@ class Storm extends Growable {
     }
      
     // It's time to become overcast
-    if (this.cloudtimer >= 180) {
+    if (this.cloudtimer >= 200) { // was 180
       this.cloudysky.moveIn()
       this.cloudysky.show()
     }
     // It's time to clear up
-    if (this.cloudtimer >= 600) {
+    if (this.cloudtimer >= 700) { // was 600
       this.cloudysky.moveOut()
       this.cloudysky.show()
     }
 
     // Rain
-    if (this.cloudtimer >= 400 && this.cloudtimer <= 700) {
+    if (this.cloudtimer >= 500 && this.cloudtimer <= 800) { // was 400, 700
       for (let drops of this.rain) {
         drops.show()
         drops.move()
       }
     }
     // Make double rain at the beginning
-    if (this.cloudtimer >= 400 && this.cloudtimer <= 600) {
+    if (this.cloudtimer >= 500 && this.cloudtimer <= 700) { // was 400, 600
       for (let drops of this.rain) {
         drops.show()
         drops.move()
@@ -135,13 +135,13 @@ class Storm extends Growable {
     }
 
     // Make a flood
-    if (this.cloudtimer >= 400 && this.cloudtimer <= 900) {
+    if (this.cloudtimer >= 500 && this.cloudtimer <= 1000) { // was 400, 900
       this.flood.move()
       this.flood.show()
     }
 
     // Make some plants get washed away
-    if (this.cloudtimer >= 500 && this.cloudtimer <= 800) {
+    if (this.cloudtimer >= 600 && this.cloudtimer <= 900) { // was 500, 800
       // Find out which 1 or 2 plants have longer roots
       // Deselect all the others so they get washed away
       if (!this.done) {
@@ -186,7 +186,7 @@ class Storm extends Growable {
 
 
     // It's time to become cloudier - add moreClouds
-    if (this.cloudtimer >= 100 && this.cloudtimer <= 600) {
+    if (this.cloudtimer >= 100 && this.cloudtimer <= 600) { // was 600
       for (let cloud of this.moreClouds) { 
         cloud.show()
         cloud.move()
@@ -199,7 +199,7 @@ class Storm extends Growable {
       cloud.move()
     }
 
-    if (this.cloudtimer > 1000) {
+    if (this.cloudtimer > 1100) { // was 1000
       newSeasonSwitch = true
       timeSlider.value(10)
       this.reset()

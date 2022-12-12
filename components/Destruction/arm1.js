@@ -25,7 +25,7 @@ class Arm1 {
     // Draw the first arm
 
     fill(240,170,40)
-    stroke(100,90,60,120)
+    stroke(150,90,80,150) //100,90,60,120)
     strokeWeight(8)
     this.unit = width*.017
     let vx = random(-2,2)
@@ -49,7 +49,7 @@ class Arm1 {
       endShape(CLOSE)
 
       // Draw the outlines at the 2 sides
-      stroke(100,90,80)
+      stroke(140,90,70,150)  // was 100,90,80)
       beginShape(LINES)
       vertex(vx, vy+2.0*this.unit)
       vertex(vx+18.0*this.unit, vy+2.8*this.unit)

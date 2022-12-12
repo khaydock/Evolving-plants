@@ -4,7 +4,7 @@ class Overcast {
     this.pos = createVector(x, y)
     this.droplets = []
     // Define the position and radius of each droplet
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 110; i++) {
       this.x = random(-width-50,-50)
       this.y = random(-10,height*.3)
       this.r = random(200,300)
@@ -16,8 +16,8 @@ class Overcast {
   
   moveIn() {
     // The droplets move in from off the canvas to their positions on the canvas 
-    this.pos.x += (this.pos.x <= width)? 3:0
-  }
+    this.pos.x += (this.pos.x <= width)? 3.5:0
+  } // was 3
 
   moveOut() {
     // The droplets move out to make the sky clear up 
