@@ -255,14 +255,17 @@ whither() {
   if(this.length <= this.finLength*0.7) { 
 
     // Check for a flood
-    if (this.generationCounter % 3 == 0 && !bulldozer) {
+    // This is being done for each plant
+    let chance = random()
+    if (chance < 0.2 && !bulldozer) {
+    // if (this.generationCounter % 6 == 0 && !bulldozer) {
       stormy = true
       console.log ("stormy")
       timeSlider.value(0)
     }
 
      // Check for a bulldozer
-     if (this.generationCounter % 4 == 0 && !stormy) {
+     if (chance > 0.85 && !stormy) {
       bulldozer = true
       console.log ("bulldozer")
       timeSlider.value(0)

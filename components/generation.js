@@ -87,7 +87,7 @@ class Generation extends Growable {
 
     // make new season
     this.newSeasonPlants = []
-  
+
     // Find the position in which each new plant will grow
     let sep = width/(this.nPlants*2)
     for(let i = 0; i < this.nPlants; i++) {
@@ -119,6 +119,7 @@ class Generation extends Growable {
   }
 
   selectSeed(droppedSeeds, randx) {
+    // Apparently, this is used only when no seeds are manually selected?????
     // Find the dropped seed closest to randx
     droppedSeeds.sort((a, b) => {
       let dist = Math.abs(a.dropPoint.x - randx) - Math.abs(b.dropPoint.x - randx)

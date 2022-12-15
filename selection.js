@@ -144,7 +144,7 @@ function draw() {
       if (!death) {
         death = true
         for(let i = 0; i < gen0.plants.length; i++) {
-          gen0.plants[i].toggleSelect() 
+          gen0.plants[i].selected = true 
         }
       }
       if (bulldozer) {

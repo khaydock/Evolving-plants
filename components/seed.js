@@ -38,7 +38,9 @@ class Seed extends Growable {
       this.growChildren()
       
       // Dropping seeds after the plant is selected occurs here
+      // console.log (" Is it TRUE?")
       if(this.plant.selected === true) {
+        // console.log (" Yes, it's TRUE!")
         this.dropVector = p5.Vector.sub(this.dropPoint, this.pos).normalize().mult(10) 
         this.drop()
       }
