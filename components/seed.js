@@ -34,7 +34,7 @@ class Seed extends Growable {
 
   grow() {
 
-    if(this.time > 550) {
+    if(this.time > 750) { // was 550
       this.growChildren()
       
       // Dropping seeds after the plant is selected occurs here

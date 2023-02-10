@@ -74,8 +74,10 @@ class Generation extends Growable {
     let selectedPlants = this.plants.filter(plant => plant.selected === true)
 
     // select all plants if no plant is selected 
-    if(selectedPlants.length == 0) selectedPlants = this.plants
-  
+    if(selectedPlants.length == 0) {
+      selectedPlants = this.plants
+    }
+    
     // For each plant in the selectedPlants array, all its seeds are put in the dropped seeds array
     
     // Filter puts every child from the plant.allChildren array that is an instanceof seeds into the seeds array

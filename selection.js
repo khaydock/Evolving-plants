@@ -1,5 +1,10 @@
+// Simulates evolution of plants in the mustard family
+// Shows evolution by natural selection if users do not select plants
+// Users can select which plants will give seeds for the next generation, and thereby breed plants which different characteristics.
+// made by Anushka Trivedi, Karen Haydock, and Neeti Sivakumar
+
 let globalTime = 0
-// to stop showing growth of plants, change showGrowth to false, and make changes in Growable
+// to stop showing growth of plants, change showGrowth to false, and make changes in Growable// version with auto new season and whateverelse
 // The reason we cannot have both growth and no growth in one version (with selection of new seasons), is that things have to be initialised differently in a number of places
 let showGrowth = true
 
@@ -21,7 +26,7 @@ excavTime = 0
 
 // gen0 has to be defined before setup
 //Change the following to set the number of plants in the field.
-const gen0 = new Generation(4) 
+const gen0 = new Generation(5) 
 
 // Uncomment the following to have a new season button (also uncomment section in setup)
 // let newSeasonButton

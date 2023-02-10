@@ -1,10 +1,11 @@
 class Person {
   // Make a person
-  constructor(x,y) {
+  constructor(x,y, variety) {
     this.pos = createVector(x, y)
     this.armAng = 0
     this.walkAng = 0
     this.wave = []
+    this.v = variety
   }
 
   move() {
@@ -29,30 +30,30 @@ class Person {
       translate (this.pos.x,-this.pos.y)
       // the person
       beginShape()
-        vertex(8, 13)
+        vertex(8, 13+this.v*2)
         // neck 
         bezierVertex(8,12,     5,8,     9.5,5) 
         bezierVertex(9.5,5,   9,4.3,   9,4.3) 
         // chin
-        bezierVertex(9,4.3,   7.5,5.3, 7.3,4.) 
+        bezierVertex(9,4.3-this.v,   7.5,5.3, 7.3,4.) 
         bezierVertex(6.8,4.5, 7,4.3,   7,4.3) 
         // mouth
-        bezierVertex(7,4.3,   6.3,4.3,  6.6,4-random()) 
+        bezierVertex(7,4.3,   6.3,4.3,  6.6+this.v,4-random()) 
         bezierVertex(7.4,3.5,  7.5,3.8,  7.4-random(),3.5)
-        bezierVertex(7,3.2,  5.8,3.5,  6,3.3) 
+        bezierVertex(7,3.2,  5.8-this.v,3.5,  6,3.3+this.v) 
         // nose
         bezierVertex(6.2,2.8,  6.4,2.5,  6.4,2.5)
-        bezierVertex(6.4,2.5,  5.4,3,  5.5,2.4)
+        bezierVertex(6.4,2.5,  5.4,3,  5.5,2.4+this.v)
         bezierVertex(5.6,2.1,  6.3,1.5,  6.1,1.3)
         // eye
-        bezierVertex(6.4,1.4,  6.7,1.4,  7.5,1.5)
+        bezierVertex(6.4,1.4,  6.7,1.4,  7.5,1.5+this.v*.5)
         bezierVertex(7.7,1.3,  6.7,0.7,  6.4,1.4)
         // head & back
-        bezierVertex(5.7,1.7,  6.4,0,  8,0) 
+        bezierVertex(5.7,1.7,  6.4,0-this.v*2,  8+this.v*3,0) 
         bezierVertex(9,0,  10.5,0,   11.5,1) 
-        bezierVertex(12.7,2,  17,9,   18,13) 
+        bezierVertex(12.7,2,  17,9,   18-this.v*5,13) 
         vertex(8,13) 
-     endShape() 
+      endShape() 
      circle (6.76,1.26, .4)
     }
     pop ()

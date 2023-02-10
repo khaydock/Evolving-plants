@@ -10,6 +10,8 @@ class Plant extends Growable {
     this.grownUp = grownUp
     this.death = death
     this.deathTime = 0
+    this.germination = false
+    this.swelling = 0
 
     // bulldozer = true if a bulldozer is coming
     this.bulldozer = bulldozer
@@ -152,7 +154,7 @@ class Plant extends Growable {
 
 
   grow() {
-    
+   
     // The width will grow until finalWidth is reached.
     if (this.currWidth <= this.finalWidth) {
       this.currWidth += .01 * this.timer.inc
@@ -214,7 +216,7 @@ class Plant extends Growable {
     // Make the stems grow in length and angle 
     // (this starts happening immediately & continues even after the stalk stops growing)
     this.growChildren()
-
+    
   }
 
   grown() {
@@ -261,6 +263,15 @@ class Plant extends Growable {
       noFill()
       circle(this.pos.x, this.groundLevel - this.currHeight, 200)
     }
+
+    // Show germination
+     fill (150,100,20)
+    circle (this.pos.x, this.groundLevel, this.swelling)
+   if (!this.germination) {
+    this.swelling ++
+    if (this.swelling >= 15) { this.germination = true}
+    return
+   }
     // Draw the stems
     for (let i = 0; i < this.stems.length; i++) {
       let b = this.stems[i]
@@ -342,7 +353,7 @@ class Plant extends Growable {
     this.selected = this.selected === true ? false : true
     return this
   }
-// Apparaently the following is not used ??????
+// The following is not used ??????
   // Dropping seeds after the plant is selected
   dropSeeds() {
     // this.stems.forEach(stem => {
